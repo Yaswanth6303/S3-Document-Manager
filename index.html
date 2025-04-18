@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="../assets/cloud.svg" />
+    <title>S3 Document Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-cloud"></i> S3 Document Manager</h1>
+        <p>Upload, browse and download your documents easily</p>
+      </header>
+
+      <main>
+        <section class="upload-section">
+          <h2>Upload Documents</h2>
+          <div class="upload-container" id="upload-container">
+            <div class="upload-area" id="upload-area">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p>Drag & Drop files here</p>
+              <p>OR</p>
+              <label for="file-input" class="select-button">Select Files</label>
+              <input type="file" id="file-input" multiple hidden />
+            </div>
+            <div class="selected-files" id="selected-files">
+              <h3>Selected Files</h3>
+              <ul id="file-list"></ul>
+              <button id="upload-button" class="action-button">
+                Upload All
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="files-section">
+          <div class="section-header">
+            <h2>My Documents</h2>
+            <div class="search-container">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search files..."
+              />
+              <button id="refresh-button">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+          <div class="files-container" id="files-container">
+            <div class="loading" id="loading">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Loading files...</p>
+            </div>
+            <div class="file-list" id="s3-file-list"></div>
+          </div>
+        </section>
+      </main>
+
+      <div class="notification" id="notification">
+        <p id="notification-message"></p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1381.0/aws-sdk.min.js"></script>
+    <script type="module" src="server.js"></script>
+  </body>
+</html>
